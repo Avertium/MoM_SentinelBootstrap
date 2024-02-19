@@ -53,9 +53,131 @@
         "powerbiName": "[concat('powerbi', uniqueString(resourceGroup().id))]",
         "ascName": "[concat('asc', uniqueString(resourceGroup().id))]",
         "aadipName": "[concat('aadip', uniqueString(resourceGroup().id))]",
-        "tiName": "[concat('ti', uniqueString(resourceGroup().id))]"
+        "tiName": "[concat('ti', uniqueString(resourceGroup().id))]",
+        "logRhythmName": "[concat('lr', uniqueString(resourceGroup().id))]"
     },
     "resources": [
+         {
+            "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
+            "type": "Microsoft.Insights/dataCollectionEndpoints",
+            "apiVersion": "2022-06-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Created By": "Daniel Giebink",
+                "Department": "CD/DEV/CFC",
+                "Purpose": "Sentinel MOM"
+            },
+            "properties": {
+                "immutableId": "dce-a40bb24c627f43be9b3ed488e2b6ad2d",
+                "configurationAccess": {},
+                "logsIngestion": {},
+                "networkAcls": {
+                    "publicNetworkAccess": "Enabled"
+                }
+            }
+         },
+         {
+            "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
+            "type": "Microsoft.Insights/dataCollectionRules",
+            "apiVersion": "2022-06-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'))]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "dataCollectionEndpointId": "[parameters('dataCollectionEndpoints_LRAlarmEndpoint_externalid')]",
+                "streamDeclarations": {
+                    "Custom-LogRhythmAlarms_CL": {
+                        "columns": [
+                            {
+                                "name": "source_ref",
+                                "type": "string"
+                            },
+                            {
+                                "name": "description",
+                                "type": "string"
+                            },
+                            {
+                                "name": "product_type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "severity",
+                                "type": "string"
+                            },
+                            {
+                                "name": "timestamp",
+                                "type": "datetime"
+                            },
+                            {
+                                "name": "product_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "event_count",
+                                "type": "int"
+                            },
+                            {
+                                "name": "product_info",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "fulllog",
+                                "type": "string"
+                            },
+                            {
+                                "name": "category",
+                                "type": "string"
+                            },
+                            {
+                                "name": "datasource",
+                                "type": "string"
+                            },
+                            {
+                                "name": "src_user",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "src_app",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "src_object",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "dst_host",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "received",
+                                "type": "datetime"
+                            }
+                        ]
+                    }
+                },
+                "dataSources": {},
+                "destinations": {
+                    "logAnalytics": [
+                        {
+                            "workspaceResourceId": "[parameters('workspaces_avl_azuresentinellab_externalid')]",
+                            "name": "5a802e0d32b84eb0a78924337c0321de"
+                        }
+                    ]
+                },
+                "dataFlows": [
+                    {
+                        "streams": [
+                            "Custom-LogRhythmAlarms_CL"
+                        ],
+                        "destinations": [
+                            "5a802e0d32b84eb0a78924337c0321de"
+                        ],
+                        "transformKql": "source\n| extend TimeGenerated = todatetime(timestamp)\n\n",
+                        "outputStream": "Custom-LogRhythmAlarms_CL"
+                    }
+                ]
+            }
+         },
          {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureActiveDirectory')]",
             "type": "microsoft.aadiam/diagnosticSettings",
