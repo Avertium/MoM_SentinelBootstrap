@@ -61,7 +61,7 @@
             "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
             "type": "Microsoft.Insights/dataCollectionEndpoints",
             "apiVersion": "2022-06-01",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'))]",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'),'-dce')]",
             "location": "[parameters('location')]",
             "tags": {
                 "Created By": "Daniel Giebink",
@@ -81,10 +81,13 @@
             "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
             "type": "Microsoft.Insights/dataCollectionRules",
             "apiVersion": "2022-06-01",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'))]",
+            "dependsOn": [
+                "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'),'-dce')]"
+            ],
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'),'-dcr')]",
             "location": "[parameters('location')]",
             "properties": {
-                "dataCollectionEndpointId": "[parameters('dataCollectionEndpoints_LRAlarmEndpoint_externalid')]",
+                "dataCollectionEndpointId": "[reference(resourceId(concat(parameters('workspaceName'),'/Microsoft.Insights/',variables('logRhythmName'),'-dce'), '2018-11-30', 'Full')).properties.immutableId]",
                 "streamDeclarations": {
                     "Custom-LogRhythmAlarms_CL": {
                         "columns": [
@@ -159,7 +162,7 @@
                 "destinations": {
                     "logAnalytics": [
                         {
-                            "workspaceResourceId": "[parameters('workspaces_avl_azuresentinellab_externalid')]",
+                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
                             "name": "5a802e0d32b84eb0a78924337c0321de"
                         }
                     ]
