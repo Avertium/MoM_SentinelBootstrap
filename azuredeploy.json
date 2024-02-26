@@ -154,26 +154,27 @@
     "variables": {
     },
     "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2020-06-01",
-            "name": "[parameters('rgName')]",
-            "location": "[parameters('location')]",
-            "properties": {}
-        },
+        // {
+        //     "type": "Microsoft.Resources/resourceGroups",
+        //     "apiVersion": "2020-06-01",
+        //     "name": "[parameters('rgName')]",
+        //     "location": "[parameters('location')]",
+        //     "properties": {}
+        // },
         {
             "name": "workspaceCreation",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2022-09-01",
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
+                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "resourceGroup": "[parameters('rgName')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(parameters('_artifactsLocation'), 'v2/LinkedTemplates/workspace.json')]",
-                    "contentVersion": "1.0.0.0"
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/workspace.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/workspace.json"
                 },
                 "parameters": {
                     "workspaceName": {
@@ -187,6 +188,9 @@
                     },
                     "dataRetention": {
                         "value": "[parameters('dataRetention')]"
+                    },
+                    "dataConnectorsKind": {
+                        "value": "[parameters('enableDataConnectors')]"
                     },
                     "immediatePurgeDataOn30Days": {
                         "value": "[parameters('immediatePurgeDataOn30Days')]"
@@ -203,7 +207,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "name": "settings",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2022-09-01",
             "dependsOn": [
                 "workspaceCreation"
             ],
@@ -211,8 +215,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(parameters('_artifactsLocation'), 'v2/LinkedTemplates/settings.json')]",
-                    "contentVersion": "1.0.0.0"
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/settings.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/settings.json"
                 },
                 "parameters": {
                     "workspaceName": {
@@ -234,7 +239,7 @@
             "condition": "[not(empty(parameters('enableDataConnectors')))]",
             "name": "enableDataConnectors",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2022-09-01",
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
                 "workspaceCreation",
@@ -243,10 +248,14 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(parameters('_artifactsLocation'), 'v2/LinkedTemplates/dataConnectors.json')]",
-                    "contentVersion": "1.0.0.0"
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataConnectors.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/dataConnectors.json"
                 },
                 "parameters": {
+                    "dataRetention": {
+                        "value": "[parameters('dataRetention')]"
+                    },
                     "dataConnectorsKind": {
                         "value": "[parameters('enableDataConnectors')]"
                     },
@@ -272,17 +281,18 @@
             "condition": "[or(not(empty(parameters('enableSolutions1P'))),not(empty(parameters('enableSolutionsEssentials'))),not(empty(parameters('enableSolutionsTraining'))))]",
             "name": "enableSolutionsAndAlerts",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2022-09-01",
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
-                "workspaceCreation",
-                "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
+                "workspaceCreation"
+                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(parameters('_artifactsLocation'), 'v2/LinkedTemplates/solutionsAndAlerts.json')]",
-                    "contentVersion": "1.0.0.0"
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/solutionsAndAlerts.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/solutionsAndAlerts.json"
                 },
                 "parameters": {
                     "enableSolutions1P": {
