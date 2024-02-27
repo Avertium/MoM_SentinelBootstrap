@@ -613,6 +613,32 @@
                       "visible": "[if(steps('analyticsRules').enableScheduledAlerts, true, false)]"
                   }
               ]
+          },
+          {
+            "name": "xdrLighthouse",
+            "label": "XDR Lighthouse Connection",
+            "elements": [
+                {
+                    "name": "infoBoxRules",
+                    "type": "Microsoft.Common.InfoBox",
+                    "visible": true,
+                    "options": {
+                        "icon": "Info",
+                        "text": "Please choose whether you would like to setup the connection to Avertium XDR via Lighthouse",
+                        "uri": ""
+                    }
+                },
+                {
+                    "name": "enableXDR",
+                    "type": "Microsoft.Common.CheckBox",
+                    "label": "Enable XDR Lighthouse connection for Avertium Managed Services?",
+                    "toolTip": "Select to enable XDR Lighthouse connection for Avertium Managed Services?",
+                    "constraints": {
+                        "required": false,
+                        "validationMessage": "Enables XDR Lighthouse connection for the given "
+                    }
+                }
+            ]
           }
         ],
         "outputs": {
@@ -633,6 +659,7 @@
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
             "enableScheduledAlerts": "[steps('analyticsRules').enableScheduledAlerts]",
             "severityLevels": "[steps('analyticsRules').severityLevels]",
+            "enableXDRLighthouse": "[steps('enableXDR').enableXDR]",
             "rgName": "[basics('rgName')]"
         }
     }
