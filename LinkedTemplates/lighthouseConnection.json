@@ -1,0 +1,101 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mspOfferName": {
+            "type": "string",
+            "metadata": {
+                "description": "Specify a unique name for your offer"
+            },
+            "defaultValue": "Avertium XDR"
+        },
+        "mspOfferDescription": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the Managed Service Provider offering"
+            },
+            "defaultValue": "Avertium Managed Services"
+        }
+    },
+    "variables": {
+        "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
+        "mspAssignmentName": "[guid(parameters('mspOfferName'))]",
+        "managedByTenantId": "f4817ec4-5e1a-42c0-a96a-b89179f9ed9d",
+        "authorizations": [
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "87a39d53-fc1b-424a-814c-f7e04687dc9e",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "e8ddcd69-c73f-4f9f-9844-4100522f16ad",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "39bc4728-0917-49c7-9d2c-d95423bc2eb4",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",
+                "roleDefinitionId": "602da2ba-a5c2-41da-b01d-5360126ab525",
+                "principalIdDisplayName": "XDR Engineers"
+            },
+            {
+                "principalId": "7f7d232d-cd23-4bcf-bcd4-2e7dbe179e0d",
+                "roleDefinitionId": "3e150937-b8fe-4cfb-8069-0eaf05ecd056",
+                "principalIdDisplayName": "XDR Analysts"
+            },
+            {
+                "principalId": "7f7d232d-cd23-4bcf-bcd4-2e7dbe179e0d",
+                "roleDefinitionId": "39bc4728-0917-49c7-9d2c-d95423bc2eb4",
+                "principalIdDisplayName": "XDR Analysts"
+            }
+        ]
+    },
+    "resources": [
+        {
+            "type": "Microsoft.ManagedServices/registrationDefinitions",
+            "apiVersion": "2020-02-01-preview",
+            "name": "[variables('mspRegistrationName')]",
+            "properties": {
+                "registrationDefinitionName": "[parameters('mspOfferName')]",
+                "description": "[parameters('mspOfferDescription')]",
+                "managedByTenantId": "[variables('managedByTenantId')]",
+                "authorizations": "[variables('authorizations')]"
+            }
+        },
+        {
+            "type": "Microsoft.ManagedServices/registrationAssignments",
+            "apiVersion": "2020-02-01-preview",
+            "name": "[variables('mspAssignmentName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+            ],
+            "properties": {
+                "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+            }
+        }
+    ],
+    "outputs": {
+        "mspOfferName": {
+            "type": "string",
+            "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+        },
+        "authorizations": {
+            "type": "array",
+            "value": "[variables('authorizations')]"
+        }
+    }
+}

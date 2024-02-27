@@ -149,6 +149,13 @@
                 "description": "The location of resources"
             },
             "defaultValue": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Tools/Sentinel-All-In-One/"
+        },
+        "enableXDRLighthouse": {
+            "type": "bool",
+            "metadata": {
+                "description": "Whether or not to add Lighthouse connection to XDR"
+            },
+            "defaultValue": false
         }
     },
     "variables": {
@@ -317,6 +324,26 @@
                         "value": "[parameters('location')]"
                     }
                 }
+            }
+        },
+        {
+            "condition": "[parameters('enableXDRLighthouse')]",
+            "name": "enableXDRLighthouseConnection",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "workspaceCreation"
+                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/solutionsAndAlerts.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/lighthouseConnection.json"
+                },
+                "parameters": {}
             }
         }
     ],
