@@ -637,6 +637,20 @@
                         "required": false,
                         "validationMessage": "Enables XDR Lighthouse connection for the given "
                     }
+                },
+                {
+                    "name": "mspTenantId",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Managing Tenant ID",
+                    "placeholder": "",
+                    "defaultValue": "",
+                    "toolTip": "Enter the managing account's tenant id",
+                    "constraints": {
+                        "required": "[steps('xdrLighthouse').enableXDR]",
+                        "regex": "^[A-Za-z0-9]{8}-[A-Za-z0-9-]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$",
+                        "validationMessage": "Only a valid tenant ID is allowed."
+                    },
+                    "visible": "[steps('xdrLighthouse').enableXDR]"  
                 }
             ]
           }
@@ -660,6 +674,7 @@
             "enableScheduledAlerts": "[steps('analyticsRules').enableScheduledAlerts]",
             "severityLevels": "[steps('analyticsRules').severityLevels]",
             "enableXDRLighthouse": "[steps('enableXDR').enableXDR]",
+            "mspTenantId": "[steps('enableXDR').mspTenantId]",
             "rgName": "[basics('rgName')]"
         }
     }
