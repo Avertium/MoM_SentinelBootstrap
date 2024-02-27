@@ -15,12 +15,19 @@
                 "description": "Name of the Managed Service Provider offering"
             },
             "defaultValue": "Avertium Managed Services"
+        },
+        "mspTenantId": {
+            "type": "string",
+            "metadata": {
+                "description": "ID of the managing tenant for the lighthouse connection"
+            },
+            "defaultValue": ""
         }
     },
     "variables": {
         "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
         "mspAssignmentName": "[guid(parameters('mspOfferName'))]",
-        "managedByTenantId": "f4817ec4-5e1a-42c0-a96a-b89179f9ed9d",
+        "managedByTenantId": "[parameters('mspTenantId')]",
         "authorizations": [
             {
                 "principalId": "49dd055d-2ca3-4045-918f-856e6e6169e6",

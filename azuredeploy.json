@@ -156,6 +156,13 @@
                 "description": "Whether or not to add Lighthouse connection to XDR"
             },
             "defaultValue": false
+        },
+        "mspTenantId": {
+            "type": "string",
+            "metadata": {
+                "description": "The tenant ID of the managing account for lighthouse."
+            },
+            "defaultValue": ""
         }
     },
     "variables": {
@@ -343,7 +350,11 @@
                     // "contentVersion": "1.0.0.0"
                     "relativePath": "LinkedTemplates/lighthouseConnection.json"
                 },
-                "parameters": {}
+                "parameters": {
+                    "mspTenantId": {
+                        "value": "[parameters('mspTenantId')]"
+                    }
+                }
             }
         }
     ],
