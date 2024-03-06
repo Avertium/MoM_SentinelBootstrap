@@ -53,8 +53,7 @@
         "powerbiName": "[concat('powerbi', uniqueString(resourceGroup().id))]",
         "ascName": "[concat('asc', uniqueString(resourceGroup().id))]",
         "aadipName": "[concat('aadip', uniqueString(resourceGroup().id))]",
-        "tiName": "[concat('ti', uniqueString(resourceGroup().id))]",
-        "logRhythmName": "[concat('lr', uniqueString(resourceGroup().id))]"
+        "tiName": "[concat('ti', uniqueString(resourceGroup().id))]"
     },
     "resources": [
          {

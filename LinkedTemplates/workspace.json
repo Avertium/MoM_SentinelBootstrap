@@ -193,6 +193,454 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
+            "type": "Microsoft.OperationalInsights/workspaces/tables",
+            "apiVersion": "2022-10-01",
+            "name": "[format('{0}/{1}', parameters('workspaceName'), 'LogRhythmEvents_CL')]",
+            "properties": {
+                "plan": "Analytics",
+                "retentionInDays": "[parameters('dataRetention')]",
+                "schema": {
+                    "columns": [
+                        {
+                            "name": "alarm_id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "alarm_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "TimeGenerated",
+                            "type": "DateTime"
+                        },
+                        {
+                            "name": "account",
+                            "type": "string"
+                        },
+                        {
+                            "name": "action",
+                            "type": "string"
+                        },
+                        {
+                            "name": "amount",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "bytesIn",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "bytesOut",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "classificationId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "classificationName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "classificationTypeName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "command",
+                            "type": "string"
+                        },
+                        {
+                            "name": "commonEventId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "cve",
+                            "type": "string"
+                        },
+                        {
+                            "name": "commonEventName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "directionId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "directionName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "domain",
+                            "type": "string"
+                        },
+                        {
+                            "name": "duration",
+                            "type": "int"
+                        },
+                        {
+                            "name": "entityId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "entityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "group",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedEntityId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "impactedEntityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedKnownHostId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "impactedHostName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedHost",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedInterface",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedIP",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedLocation",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "impactedMAC",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedNATIP",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedNATPort",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "impactedNetwork",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "impactedPort",
+                            "type": "int"
+                        },
+                        {
+                            "name": "impactedZone",
+                            "type": "string"
+                        },
+                        {
+                            "name": "itemsPacketsIn",
+                            "type": "int"
+                        },
+                        {
+                            "name": "itemsPacketsOut",
+                            "type": "int"
+                        },
+                        {
+                            "name": "logDate",
+                            "type": "string"
+                        },
+                        {
+                            "name": "login",
+                            "type": "string"
+                        },
+                        {
+                            "name": "logMessage",
+                            "type": "string"
+                        },
+                        {
+                            "name": "logSourceHostId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "logSourceHostName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "logSourceName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "logSourceTypeName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "messageId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "mpeRuleId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "mpeRuleName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "normalDateMax",
+                            "type": "string"
+                        },
+                        {
+                            "name": "objectName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "objectType",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originEntityId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "originEntityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originKnownHostId",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originHostName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originHost",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originInterface",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originIP",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originLocation",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originMAC",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originNATIP",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originNATPort",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originNetwork",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "originPort",
+                            "type": "int"
+                        },
+                        {
+                            "name": "originZone",
+                            "type": "string"
+                        },
+                        {
+                            "name": "parentProcessId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "parentProcessName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "parentProcessPath",
+                            "type": "string"
+                        },
+                        {
+                            "name": "policy",
+                            "type": "string"
+                        },
+                        {
+                            "name": "priority",
+                            "type": "int"
+                        },
+                        {
+                            "name": "process",
+                            "type": "string"
+                        },
+                        {
+                            "name": "processId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "protocolId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "protocolName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "int"
+                        },
+                        {
+                            "name": "rate",
+                            "type": "int"
+                        },
+                        {
+                            "name": "reason",
+                            "type": "string"
+                        },
+                        {
+                            "name": "recipient",
+                            "type": "string"
+                        },
+                        {
+                            "name": "result",
+                            "type": "string"
+                        },
+                        {
+                            "name": "responseCode",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sender",
+                            "type": "string"
+                        },
+                        {
+                            "name": "session",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sessionType",
+                            "type": "string"
+                        },
+                        {
+                            "name": "serialNumber",
+                            "type": "string"
+                        },
+                        {
+                            "name": "serviceId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "serviceName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "severity",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status",
+                            "type": "string"
+                        },
+                        {
+                            "name": "size",
+                            "type": "int"
+                        },
+                        {
+                            "name": "subject",
+                            "type": "string"
+                        },
+                        {
+                            "name": "threatId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "threatName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "userAgent",
+                            "type": "string"
+                        },
+                        {
+                            "name": "vendorInfo",
+                            "type": "string"
+                        },
+                        {
+                            "name": "vendorMsgId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "version",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originUserIdentityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "impactedUserIdentityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "originUserIdentityId",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "impactedUserIdentityId",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "senderIdentityId",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "senderIdentityName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "recipientIdentityId",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "recipientIdentityName",
+                            "type": "string"
+                        }
+                    ],
+                    "description": "LR Events Table",
+                    "displayName": "LogRhythmEvents_CL",
+                    "name": "LogRhythmEvents_CL"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+            ]
+        },
+        {
+            "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
             "type": "Microsoft.Insights/dataCollectionEndpoints",
             "apiVersion": "2022-06-01",
             "name": "[concat('LogRhythm','-dce')]",
@@ -217,7 +665,8 @@
             "apiVersion": "2022-06-01",
             "dependsOn": [
                 "[concat('LogRhythm','-dce')]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmAlarms_CL')]"
+                "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmAlarms_CL')]",
+                "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmEvents_CL')]"
             ],
             "name": "[concat('LogRhythm','-dcr')]",
             "location": "[parameters('location')]",
@@ -291,6 +740,438 @@
                                 "type": "datetime"
                             }
                         ]
+                    },
+                    "Custom-LogRhythmEvents_CL": {
+                        "columns": [
+                            {
+                                "name": "alarm_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "alarm_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "TimeGenerated",
+                                "type": "datetime"
+                            },
+                            {
+                                "name": "account",
+                                "type": "string"
+                            },
+                            {
+                                "name": "action",
+                                "type": "string"
+                            },
+                            {
+                                "name": "amount",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "bytesIn",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "bytesOut",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "classificationId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "classificationName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "classificationTypeName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "command",
+                                "type": "string"
+                            },
+                            {
+                                "name": "commonEventId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "cve",
+                                "type": "string"
+                            },
+                            {
+                                "name": "commonEventName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "directionId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "directionName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "domain",
+                                "type": "string"
+                            },
+                            {
+                                "name": "duration",
+                                "type": "int"
+                            },
+                            {
+                                "name": "entityId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "entityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "group",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedEntityId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "impactedEntityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedKnownHostId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "impactedHostName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedHost",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedInterface",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedIP",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedLocation",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "impactedMAC",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedNATIP",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedNATPort",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "impactedNetwork",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "impactedPort",
+                                "type": "int"
+                            },
+                            {
+                                "name": "impactedZone",
+                                "type": "string"
+                            },
+                            {
+                                "name": "itemsPacketsIn",
+                                "type": "int"
+                            },
+                            {
+                                "name": "itemsPacketsOut",
+                                "type": "int"
+                            },
+                            {
+                                "name": "logDate",
+                                "type": "string"
+                            },
+                            {
+                                "name": "login",
+                                "type": "string"
+                            },
+                            {
+                                "name": "logMessage",
+                                "type": "string"
+                            },
+                            {
+                                "name": "logSourceHostId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "logSourceHostName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "logSourceName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "logSourceTypeName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "messageId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "mpeRuleId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "mpeRuleName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "normalDateMax",
+                                "type": "string"
+                            },
+                            {
+                                "name": "objectName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "objectType",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originEntityId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "originEntityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originKnownHostId",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originHostName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originHost",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originInterface",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originIP",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originLocation",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originMAC",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originNATIP",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originNATPort",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originNetwork",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "originPort",
+                                "type": "int"
+                            },
+                            {
+                                "name": "originZone",
+                                "type": "string"
+                            },
+                            {
+                                "name": "parentProcessId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "parentProcessName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "parentProcessPath",
+                                "type": "string"
+                            },
+                            {
+                                "name": "policy",
+                                "type": "string"
+                            },
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            },
+                            {
+                                "name": "process",
+                                "type": "string"
+                            },
+                            {
+                                "name": "processId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "protocolId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "protocolName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int"
+                            },
+                            {
+                                "name": "rate",
+                                "type": "int"
+                            },
+                            {
+                                "name": "reason",
+                                "type": "string"
+                            },
+                            {
+                                "name": "recipient",
+                                "type": "string"
+                            },
+                            {
+                                "name": "result",
+                                "type": "string"
+                            },
+                            {
+                                "name": "responseCode",
+                                "type": "string"
+                            },
+                            {
+                                "name": "sender",
+                                "type": "string"
+                            },
+                            {
+                                "name": "session",
+                                "type": "string"
+                            },
+                            {
+                                "name": "sessionType",
+                                "type": "string"
+                            },
+                            {
+                                "name": "serialNumber",
+                                "type": "string"
+                            },
+                            {
+                                "name": "serviceId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "serviceName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "severity",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status",
+                                "type": "string"
+                            },
+                            {
+                                "name": "size",
+                                "type": "int"
+                            },
+                            {
+                                "name": "subject",
+                                "type": "string"
+                            },
+                            {
+                                "name": "threatId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "threatName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "url",
+                                "type": "string"
+                            },
+                            {
+                                "name": "userAgent",
+                                "type": "string"
+                            },
+                            {
+                                "name": "vendorInfo",
+                                "type": "string"
+                            },
+                            {
+                                "name": "vendorMsgId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "version",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originUserIdentityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "impactedUserIdentityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "originUserIdentityId",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "impactedUserIdentityId",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "senderIdentityId",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "senderIdentityName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "recipientIdentityId",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "recipientIdentityName",
+                                "type": "string"
+                            }
+                        ]
                     }
                 },
                 "dataSources": {},
@@ -312,6 +1193,16 @@
                         ],
                         "transformKql": "source\n| extend TimeGenerated = todatetime(timestamp)\n\n",
                         "outputStream": "Custom-LogRhythmAlarms_CL"
+                    },
+                    {
+                        "streams": [
+                            "Custom-LogRhythmEvents_CL"
+                        ],
+                        "destinations": [
+                            "5a802e0d32b84eb0a78924337c0321de"
+                        ],
+                        "transformKql": "source\n| extend TimeGenerated = todatetime(logDate)\n\n",
+                        "outputStream": "Custom-LogRhythmEvents_CL"
                     }
                 ]
             }
@@ -321,8 +1212,7 @@
             "name": "default",
             "scope": "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
             "apiVersion": "2022-12-01-preview",
-            "properties": {
-            },
+            "properties": {},
             "dependsOn": [
                 "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
             ]
@@ -355,7 +1245,7 @@
                 "default"
             ],
             "scope": "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
-            "apiVersion":"2022-12-01-preview",
+            "apiVersion": "2022-12-01-preview",
             "properties": {
                 "severity": "Informational",
                 "status": "Closed",
