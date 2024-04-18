@@ -1,5 +1,9 @@
 # Microsoft Sentinel All-in-One
 
+<p align="center">
+<img src="./Media/Sentinel All-in-One logo.jpg?raw=true">
+</p>
+
 Avertium's Fork of Azure's Microsoft All-in-one V2 template is aimed at helping Avertium Engineers quickly create a full Microsoft Sentinel environment, speeding up deployment and configuration tasks with a quick and intuitive wizard, saving time and simplifying setup.
 
 A link to the original repo and template is <a href="https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Sentinel-All-In-One">here</a>.
