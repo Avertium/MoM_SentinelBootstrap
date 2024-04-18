@@ -441,6 +441,11 @@
                                 "value": "LogRhythm"
                             },
                             {
+                                "label": "FusionEngine - SentinelOne",
+                                "description": "Configuration of FusionEngine SentinelOne Poller Required",
+                                "value": "SentinelOne"
+                            },
+                            {
                                 "label": "Microsoft 365 Defender",
                                 "description": "This will only enable incident and alert synchronization, no advanced hunting data will be enabled. Relevant license and Global Admin or Security Admin permission required",
                                 "value": "Microsoft365Defender"

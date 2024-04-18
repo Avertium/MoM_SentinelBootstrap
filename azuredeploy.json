@@ -267,9 +267,6 @@
                     "relativePath": "LinkedTemplates/dataConnectors.json"
                 },
                 "parameters": {
-                    "dataRetention": {
-                        "value": "[parameters('dataRetention')]"
-                    },
                     "dataConnectorsKind": {
                         "value": "[parameters('enableDataConnectors')]"
                     },
