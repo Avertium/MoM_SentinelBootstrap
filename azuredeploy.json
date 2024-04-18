@@ -186,9 +186,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/workspace.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/workspace.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/workspace.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/workspace.json"
                 },
                 "parameters": {
                     "workspaceName": {
@@ -229,9 +229,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/settings.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/settings.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/settings.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/settings.json"
                 },
                 "parameters": {
                     "workspaceName": {
@@ -262,9 +262,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataConnectors.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/dataConnectors.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataConnectors.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/dataConnectors.json"
                 },
                 "parameters": {
                     "dataConnectorsKind": {
@@ -301,9 +301,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/solutionsAndAlerts.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/solutionsAndAlerts.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/solutionsAndAlerts.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/solutionsAndAlerts.json"
                 },
                 "parameters": {
                     "enableSolutions1P": {
@@ -343,9 +343,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/solutionsAndAlerts.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/lighthouseConnection.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/lighthouseConnection.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/lighthouseConnection.json"
                 },
                 "parameters": {
                     "mspTenantId": {
