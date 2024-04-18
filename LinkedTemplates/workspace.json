@@ -262,6 +262,14 @@
                             "type": "int"
                         },
                         {
+                            "name": "timestamp",
+                            "type": "datetime"
+                        },
+                        {
+                            "name": "timestamp2",
+                            "type": "datetime"
+                        },
+                        {
                             "name": "TimeGenerated",
                             "type": "datetime"
                         }
@@ -1368,6 +1376,14 @@
                                 "type": "int"
                             },
                             {
+                                "name": "timestamp",
+                                "type": "datetime"
+                            },
+                            {
+                                "name": "timestamp2",
+                                "type": "datetime"
+                            },
+                            {
                                 "name": "TimeGenerated",
                                 "type": "datetime"
                             }
@@ -1391,7 +1407,7 @@
                         "destinations": [
                             "5a802e0d32b84eb0a78924337c0321de"
                         ],
-                        "transformKql": "source\n| extend TimeGenerated = todatetime(TimeGenerated)\n\n",
+                        "transformKql": "source\n| extend TimeGenerated = todatetime(timestamp2)\n\n",
                         "outputStream": "Custom-SentinelOneAlarms_CL"
                     }
                 ]
