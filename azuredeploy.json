@@ -353,6 +353,89 @@
                     }
                 }
             }
+        },
+        {
+            //"condition": "[parameters('enableXDRLighthouse')]",
+            "name": "addDataCollectionEndpoint",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "workspaceCreation"
+                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionEndpoint.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/dataCollectionEndpoint.json"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    }
+                }
+            }
+        },
+        {
+            // "condition": "[parameters('enableXDRLighthouse')]",
+            "name": "addTables",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "workspaceCreation"
+                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/customLogTables.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/customLogTables.json"
+                },
+                "parameters": {
+                    "dataConnectorsKind": {
+                        "value": "[parameters('enableDataConnectors')]"
+                    },
+                    "workspaceName": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "dataRetention": {
+                        "value": "[parameters('dataRetention')]"
+                    }
+                }
+            }
+        },
+        {
+            // "condition": "[parameters('enableXDRLighthouse')]",
+            "name": "addDataCollectionRules",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "addTables"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionRules.json')]",
+                    // "contentVersion": "1.0.0.0"
+                    "relativePath": "LinkedTemplates/dataCollectionRules.json"
+                },
+                "parameters": {
+                    "dataConnectorsKind": {
+                        "value": "[parameters('enableDataConnectors')]"
+                    },
+                    "workspaceName": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    }
+                }
+            }
         }
     ],
     "outputs": {
