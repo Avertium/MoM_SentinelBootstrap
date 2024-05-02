@@ -192,6 +192,426 @@
             ]
         },
         {
+            "condition": "[contains(parameters('dataConnectorsKind'), 'FESplunk')]",
+            "type": "Microsoft.OperationalInsights/workspaces/tables",
+            "apiVersion": "2022-10-01",
+            "name": "[format('{0}/{1}', parameters('workspaceName'), 'SplunkNotables_CL')]",
+            "properties": {
+                "plan": "Analytics",
+                "retentionInDays": "[parameters('dataRetention')]",
+                "schema": {
+                    "columns": [
+                        {
+                            "name": "product_id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "customer_id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Account_Domain",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "Account_Name",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "ComputerName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Creator_Process_ID",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Creator_Process_Name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "EventCode",
+                            "type": "string"
+                        },
+                        {
+                            "name": "EventType",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Keywords",
+                            "type": "string"
+                        },
+                        {
+                            "name": "LogName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Logon_ID",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "Mandatory_Label",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Message",
+                            "type": "string"
+                        },
+                        {
+                            "name": "New_Process_ID",
+                            "type": "string"
+                        },
+                        {
+                            "name": "New_Process_Name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "OpCode",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Process_Command_Line",
+                            "type": "string"
+                        },
+                        {
+                            "name": "RecordNumber",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Security_ID",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "SourceName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "TaskCategory",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Token_Elevation_Type",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Type",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_hour",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_mday",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_minute",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_month",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_second",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_wday",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_year",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date_zone",
+                            "type": "string"
+                        },
+                        {
+                            "name": "disposition",
+                            "type": "string"
+                        },
+                        {
+                            "name": "disposition_default",
+                            "type": "string"
+                        },
+                        {
+                            "name": "disposition_description",
+                            "type": "string"
+                        },
+                        {
+                            "name": "disposition_label",
+                            "type": "string"
+                        },
+                        {
+                            "name": "drilldown_earliest",
+                            "type": "string"
+                        },
+                        {
+                            "name": "drilldown_earliest_offset",
+                            "type": "string"
+                        },
+                        {
+                            "name": "drilldown_latest",
+                            "type": "string"
+                        },
+                        {
+                            "name": "drilldown_latest_offset",
+                            "type": "string"
+                        },
+                        {
+                            "name": "event_hash",
+                            "type": "string"
+                        },
+                        {
+                            "name": "event_id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "eventtype",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "extract_artifacts",
+                            "type": "string"
+                        },
+                        {
+                            "name": "host",
+                            "type": "string"
+                        },
+                        {
+                            "name": "index",
+                            "type": "string"
+                        },
+                        {
+                            "name": "indexer_guid",
+                            "type": "string"
+                        },
+                        {
+                            "name": "info_max_time",
+                            "type": "string"
+                        },
+                        {
+                            "name": "info_min_time",
+                            "type": "string"
+                        },
+                        {
+                            "name": "info_search_time",
+                            "type": "string"
+                        },
+                        {
+                            "name": "investigation_profiles",
+                            "type": "string"
+                        },
+                        {
+                            "name": "linecount",
+                            "type": "string"
+                        },
+                        {
+                            "name": "numeric_urgency",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_action_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_bkt",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_cd",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_host",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_index",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_linecount",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_raw",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_rid",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_sid",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_source",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_sourcetype",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_splunk_server",
+                            "type": "string"
+                        },
+                        {
+                            "name": "orig_time",
+                            "type": "string"
+                        },
+                        {
+                            "name": "owner",
+                            "type": "string"
+                        },
+                        {
+                            "name": "owner_realname",
+                            "type": "string"
+                        },
+                        {
+                            "name": "priority",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rule_description",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rule_id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rule_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rule_title",
+                            "type": "string"
+                        },
+                        {
+                            "name": "search_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "security_domain",
+                            "type": "string"
+                        },
+                        {
+                            "name": "severities",
+                            "type": "string"
+                        },
+                        {
+                            "name": "severity",
+                            "type": "string"
+                        },
+                        {
+                            "name": "source",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sourcetype",
+                            "type": "string"
+                        },
+                        {
+                            "name": "splunk_server",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status_default",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status_description",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status_end",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status_group",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status_label",
+                            "type": "string"
+                        },
+                        {
+                            "name": "tag",
+                            "type": "string"
+                        },
+                        {
+                            "name": "tag::eventtype",
+                            "type": "string"
+                        },
+                        {
+                            "name": "timeendpos",
+                            "type": "string"
+                        },
+                        {
+                            "name": "timestartpos",
+                            "type": "string"
+                        },
+                        {
+                            "name": "urgency",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_bkt",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_cd",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_eventtype_color",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_indextime",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_raw",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_si",
+                            "type": "dynamic"
+                        },
+                        {
+                            "name": "_sourcetype",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_time",
+                            "type": "string"
+                        },
+                        {
+                            "name": "TimeGenerated",
+                            "type": "datetime"
+                        }
+                    ],
+                    "description": "Splunk Notables Table",
+                    "displayName": "SplunkNotables_CL",
+                    "name": "SplunkNotables_CL"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+            ]
+        },
+        {
             "condition": "[contains(parameters('dataConnectorsKind'), 'SentinelOne')]",
             "type": "Microsoft.OperationalInsights/workspaces/tables",
             "apiVersion": "2022-10-01",
@@ -213,10 +633,6 @@
                             "name": "containerInfo",
                             "type": "dynamic"
                         },
-                        // {
-                        //     "name": "id",
-                        //     "type": "string"
-                        // },
                         {
                             "name": "indicators",
                             "type": "dynamic"
@@ -1306,7 +1722,6 @@
             "dependsOn": [
                 "[concat('LogRhythm','-dce')]",
                 "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'SentinelOneAlarms_CL')]"
-                //"[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmEvents_CL')]"
             ],
             "name": "[concat('SentinelOne','-dcr')]",
             "location": "[parameters('location')]",
@@ -1327,10 +1742,6 @@
                                 "name": "containerInfo",
                                 "type": "dynamic"
                             },
-                            // {
-                            //     "name": "id",
-                            //     "type": "string"
-                            // },
                             {
                                 "name": "indicators",
                                 "type": "dynamic"
@@ -1409,6 +1820,448 @@
                         ],
                         "transformKql": "source\n| extend TimeGenerated = todatetime(timestamp2)\n\n",
                         "outputStream": "Custom-SentinelOneAlarms_CL"
+                    }
+                ]
+            }
+        },
+
+        {
+            "condition": "[contains(parameters('dataConnectorsKind'), 'FESplunk')]",
+            "type": "Microsoft.Insights/dataCollectionRules",
+            "apiVersion": "2022-06-01",
+            "dependsOn": [
+                "[concat('LogRhythm','-dce')]",
+                "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'SplunkNotables_CL')]"
+            ],
+            "name": "[concat('SplunkNotables','-dcr')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "dataCollectionEndpointId": "[resourceId('Microsoft.Insights/dataCollectionEndpoints','LogRhythm-dce')]",
+                "streamDeclarations": {
+                    "Custom-SplunkNotables_CL": {
+                        "columns": [
+                            {
+                                "name": "product_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "customer_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Account_Domain",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "Account_Name",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "ComputerName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Creator_Process_ID",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Creator_Process_Name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "EventCode",
+                                "type": "string"
+                            },
+                            {
+                                "name": "EventType",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Keywords",
+                                "type": "string"
+                            },
+                            {
+                                "name": "LogName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Logon_ID",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "Mandatory_Label",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Message",
+                                "type": "string"
+                            },
+                            {
+                                "name": "New_Process_ID",
+                                "type": "string"
+                            },
+                            {
+                                "name": "New_Process_Name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "OpCode",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Process_Command_Line",
+                                "type": "string"
+                            },
+                            {
+                                "name": "RecordNumber",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Security_ID",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "SourceName",
+                                "type": "string"
+                            },
+                            {
+                                "name": "TaskCategory",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Token_Elevation_Type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "Type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_hour",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_mday",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_minute",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_month",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_second",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_wday",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_year",
+                                "type": "string"
+                            },
+                            {
+                                "name": "date_zone",
+                                "type": "string"
+                            },
+                            {
+                                "name": "disposition",
+                                "type": "string"
+                            },
+                            {
+                                "name": "disposition_default",
+                                "type": "string"
+                            },
+                            {
+                                "name": "disposition_description",
+                                "type": "string"
+                            },
+                            {
+                                "name": "disposition_label",
+                                "type": "string"
+                            },
+                            {
+                                "name": "drilldown_earliest",
+                                "type": "string"
+                            },
+                            {
+                                "name": "drilldown_earliest_offset",
+                                "type": "string"
+                            },
+                            {
+                                "name": "drilldown_latest",
+                                "type": "string"
+                            },
+                            {
+                                "name": "drilldown_latest_offset",
+                                "type": "string"
+                            },
+                            {
+                                "name": "event_hash",
+                                "type": "string"
+                            },
+                            {
+                                "name": "event_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "eventtype",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "extract_artifacts",
+                                "type": "string"
+                            },
+                            {
+                                "name": "host",
+                                "type": "string"
+                            },
+                            {
+                                "name": "index",
+                                "type": "string"
+                            },
+                            {
+                                "name": "indexer_guid",
+                                "type": "string"
+                            },
+                            {
+                                "name": "info_max_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "info_min_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "info_search_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "investigation_profiles",
+                                "type": "string"
+                            },
+                            {
+                                "name": "linecount",
+                                "type": "string"
+                            },
+                            {
+                                "name": "numeric_urgency",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_action_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_bkt",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_cd",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_host",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_index",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_linecount",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_raw",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_rid",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_sid",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_source",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_sourcetype",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_splunk_server",
+                                "type": "string"
+                            },
+                            {
+                                "name": "orig_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "owner",
+                                "type": "string"
+                            },
+                            {
+                                "name": "owner_realname",
+                                "type": "string"
+                            },
+                            {
+                                "name": "priority",
+                                "type": "string"
+                            },
+                            {
+                                "name": "rule_description",
+                                "type": "string"
+                            },
+                            {
+                                "name": "rule_id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "rule_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "rule_title",
+                                "type": "string"
+                            },
+                            {
+                                "name": "search_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "security_domain",
+                                "type": "string"
+                            },
+                            {
+                                "name": "severities",
+                                "type": "string"
+                            },
+                            {
+                                "name": "severity",
+                                "type": "string"
+                            },
+                            {
+                                "name": "source",
+                                "type": "string"
+                            },
+                            {
+                                "name": "sourcetype",
+                                "type": "string"
+                            },
+                            {
+                                "name": "splunk_server",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status_default",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status_description",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status_end",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status_group",
+                                "type": "string"
+                            },
+                            {
+                                "name": "status_label",
+                                "type": "string"
+                            },
+                            {
+                                "name": "tag",
+                                "type": "string"
+                            },
+                            {
+                                "name": "tag::eventtype",
+                                "type": "string"
+                            },
+                            {
+                                "name": "timeendpos",
+                                "type": "string"
+                            },
+                            {
+                                "name": "timestartpos",
+                                "type": "string"
+                            },
+                            {
+                                "name": "urgency",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_bkt",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_cd",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_eventtype_color",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_indextime",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_raw",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_si",
+                                "type": "dynamic"
+                            },
+                            {
+                                "name": "_sourcetype",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "TimeGenerated",
+                                "type": "datetime"
+                            }
+                        ]
+                    }
+                },
+                "dataSources": {},
+                "destinations": {
+                    "logAnalytics": [
+                        {
+                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
+                            "name": "5a802e0d32b84eb0a78924337c0321de"
+                        }
+                    ]
+                },
+                "dataFlows": [
+                    {
+                        "streams": [
+                            "Custom-SplunkNotables_CL"
+                        ],
+                        "destinations": [
+                            "5a802e0d32b84eb0a78924337c0321de"
+                        ],
+                        "transformKql": "source\n| extend TimeGenerated = now() \n\n",
+                        "outputStream": "Custom-SplunkNotables_CL"
                     }
                 ]
             }
