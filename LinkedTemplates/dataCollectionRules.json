@@ -30,11 +30,6 @@
             "condition": "[contains(parameters('dataConnectorsKind'), 'LogRhythm')]",
             "type": "Microsoft.Insights/dataCollectionRules",
             "apiVersion": "2022-06-01",
-            // "dependsOn": [
-            //     "[concat('LogRhythm','-dce')]",
-            //     "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmAlarms_CL')]",
-            //     "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'LogRhythmEvents_CL')]"
-            // ],
             "name": "[concat('LogRhythm','-dcr')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -578,10 +573,6 @@
             "condition": "[contains(parameters('dataConnectorsKind'), 'SentinelOne')]",
             "type": "Microsoft.Insights/dataCollectionRules",
             "apiVersion": "2022-06-01",
-            // "dependsOn": [
-            //     "[concat('LogRhythm','-dce')]",
-            //     "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'SentinelOneAlarms_CL')]"
-            // ],
             "name": "[concat('SentinelOne','-dcr')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -688,10 +679,6 @@
             "condition": "[contains(parameters('dataConnectorsKind'), 'FESplunk')]",
             "type": "Microsoft.Insights/dataCollectionRules",
             "apiVersion": "2022-06-01",
-            // "dependsOn": [
-            //     "[concat('LogRhythm','-dce')]",
-            //     "[resourceId('Microsoft.OperationalInsights/workspaces/tables', parameters('workspaceName'),'SplunkNotables_CL')]"
-            // ],
             "name": "[concat('SplunkNotables','-dcr')]",
             "location": "[parameters('location')]",
             "properties": {

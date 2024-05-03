@@ -296,7 +296,6 @@
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
                 "workspaceCreation"
-                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -338,7 +337,6 @@
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
                 "workspaceCreation"
-                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -355,14 +353,13 @@
             }
         },
         {
-            //"condition": "[parameters('enableXDRLighthouse')]",
+            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
             "name": "addDataCollectionEndpoint",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
                 "workspaceCreation"
-                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -379,14 +376,13 @@
             }
         },
         {
-            // "condition": "[parameters('enableXDRLighthouse')]",
+            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
             "name": "addTables",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
             "resourceGroup": "[parameters('rgName')]",
             "dependsOn": [
                 "workspaceCreation"
-                // "[resourceId('Microsoft.Resources/resourceGroups',parameters('rgName'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -409,7 +405,7 @@
             }
         },
         {
-            // "condition": "[parameters('enableXDRLighthouse')]",
+            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
             "name": "addDataCollectionRules",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",

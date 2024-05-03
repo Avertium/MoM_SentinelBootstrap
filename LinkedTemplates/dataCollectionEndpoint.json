@@ -16,7 +16,7 @@
         {
             "type": "Microsoft.Insights/dataCollectionEndpoints",
             "apiVersion": "2022-06-01",
-            "name": "[concat('LogRhythm','-dce')]",
+            "name": "[concat('CustomLogs','-dce')]",
             "location": "[parameters('location')]",
             "tags": {
                 "Created By": "Daniel Giebink",
