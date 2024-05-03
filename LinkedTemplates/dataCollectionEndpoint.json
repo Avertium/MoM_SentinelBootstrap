@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Location for all resources."
+            },
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Insights/dataCollectionEndpoints",
+            "apiVersion": "2022-06-01",
+            "name": "[concat('LogRhythm','-dce')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Created By": "Daniel Giebink",
+                "Department": "CD/DEV/CFC",
+                "Purpose": "Sentinel MOM"
+            },
+            "properties": {
+                "immutableId": "dce-a40bb24c627f43be9b3ed488e2b6ad2d",
+                "configurationAccess": {},
+                "logsIngestion": {},
+                "networkAcls": {
+                    "publicNetworkAccess": "Enabled"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
