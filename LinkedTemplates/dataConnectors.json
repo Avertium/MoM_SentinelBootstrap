@@ -47,7 +47,11 @@
         },
         "taxiiEnabled": {
             "type": "string",
-            "defaultValue": "Enabled"
+            "defaultValue": "Disabled",
+            "allowedValues": [
+                "Enabled",
+                "Disabled"
+            ]
         },
         "taxiiFriendlyName": {
             "type": "string"
