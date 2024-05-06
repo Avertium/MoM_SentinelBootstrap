@@ -41,6 +41,37 @@
             "metadata": {
                 "description": "Location for all resources."
             }
+        },
+        "taxiiCollectionId": {
+            "type": "string"
+        },
+        "taxiiEnabled": {
+            "type": "string",
+            "defaultValue": "Enabled"
+        },
+        "taxiiFriendlyName": {
+            "type": "string"
+        },
+        "taxiiServer": {
+            "type": "string"
+        },
+        "taxiiUsername": {
+            "type": "string"
+        },
+        "taxiiPassword": {
+            "type": "string"
+        },
+        "taxiiLookbackPeriod": {
+            "type": "string"
+        },
+        "taxiiPollingFrequency": {
+            "type": "string",
+            "defaultValue": "OnceADay",
+            "allowedValues": [
+                "OnceADay",
+                "OnceAMinute",
+                "OnceAnHour"
+            ]
         }
     },
     "variables": {
@@ -291,6 +322,30 @@
                         "state": "enabled"
                     }
                 }
+            }
+        },
+        {
+            "condition": "[and(contains(parameters('dataConnectorsKind'), 'ThreatIntelligence'),equals(parameters('taxiiEnabled'), 'Enabled')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+            "apiVersion": "2020-01-01",
+            "location": "[parameters('location')]",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('tiName'))]",
+            "kind": "ThreatIntelligenceTaxii",
+            "properties": {
+                "collectionId": "[parameters('taxiiCollectionId')]",
+                "dataTypes": {
+                    "taxiiClient": {
+                        "state": "[parameters('taxiiEnabled')]"
+                    }
+                },
+                "friendlyName": "[parameters('taxiiFriendlyName')]",
+                "password": "[parameters('taxiiPassword')]",
+                "pollingFrequency": "[parameters('taxiiPollingFrequency')]",
+                "taxiiLookbackPeriod": "[parameters('taxiiLookbackPeriod')]",
+                "taxiiServer": "[parameters('taxiiServer')]",
+                "tenantId": "[parameters('tenantId')]",
+                "userName": "[parameters('taxiiUsername')]",
+                "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
             }
         }
     ]
