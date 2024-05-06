@@ -321,28 +321,28 @@
                         "value": "[parameters('location')]"
                     },
                     "taxiiCollectionId": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiCollectionId')]"
                     },
                     "taxiiEnabled": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiEnabled')]"
                     },
                     "taxiiFriendlyName": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiFriendlyName')]"
                     },
                     "taxiiServer": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiServer')]"
                     },
                     "taxiiUsername": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiUsername')]"
                     },
                     "taxiiPassword": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiPassword')]"
                     },
                     "taxiiLookbackPeriod": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiLookbackPeriod')]"
                     },
                     "taxiiPollingFrequency": {
-                        "value": "[parameters('location')]"
+                        "value": "[parameters('taxiiPollingFrequency')]"
                     }
                 }
             }
@@ -412,7 +412,7 @@
             }
         },
         {
-            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
+            "condition": "[or(contains(parameters('enableDataConnectors'), 'LogRhythm'),contains(parameters('enableDataConnectors'), 'SentinelOne'),contains(parameters('enableDataConnectors'), 'FESplunk'))]",
             "name": "addDataCollectionEndpoint",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
@@ -435,7 +435,7 @@
             }
         },
         {
-            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
+            "condition": "[or(contains(parameters('enableDataConnectors'), 'LogRhythm'),contains(parameters('enableDataConnectors'), 'SentinelOne'),contains(parameters('enableDataConnectors'), 'FESplunk'))]",
             "name": "addTables",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
@@ -464,7 +464,7 @@
             }
         },
         {
-            "condition": "[or(contains(parameters('dataConnectorsKind'), 'LogRhythm'),contains(parameters('dataConnectorsKind'), 'SentinelOne'),contains(parameters('dataConnectorsKind'), 'FESplunk'))]",
+            "condition": "[or(contains(parameters('enableDataConnectors'), 'LogRhythm'),contains(parameters('enableDataConnectors'), 'SentinelOne'),contains(parameters('enableDataConnectors'), 'FESplunk'))]",
             "name": "addDataCollectionRules",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
