@@ -41,6 +41,41 @@
             "metadata": {
                 "description": "Location for all resources."
             }
+        },
+        "taxiiCollectionId": {
+            "type": "string"
+        },
+        "taxiiEnabled": {
+            "type": "string",
+            "defaultValue": "Disabled",
+            "allowedValues": [
+                "Enabled",
+                "Disabled"
+            ]
+        },
+        "taxiiFriendlyName": {
+            "type": "string"
+        },
+        "taxiiServer": {
+            "type": "string"
+        },
+        "taxiiUsername": {
+            "type": "string"
+        },
+        "taxiiPassword": {
+            "type": "string"
+        },
+        "taxiiLookbackPeriod": {
+            "type": "string"
+        },
+        "taxiiPollingFrequency": {
+            "type": "string",
+            "defaultValue": "OnceADay",
+            "allowedValues": [
+                "OnceADay",
+                "OnceAMinute",
+                "OnceAnHour"
+            ]
         }
     },
     "variables": {
@@ -278,7 +313,7 @@
             }
         },
         {
-            "condition": "[contains(parameters('dataConnectorsKind'), 'ThreatIntelligence')]",
+            "condition": "[and(contains(parameters('dataConnectorsKind'), 'ThreatIntelligence'),equals(parameters('taxiiEnabled'), 'Disabled'))]",
             "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2020-01-01",
             "location": "[parameters('location')]",
@@ -291,6 +326,30 @@
                         "state": "enabled"
                     }
                 }
+            }
+        },
+        {
+            "condition": "[and(contains(parameters('dataConnectorsKind'), 'ThreatIntelligence'),equals(parameters('taxiiEnabled'), 'Enabled'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+            "apiVersion": "2023-02-01-preview",
+            "location": "[parameters('location')]",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('tiName'),'-taxii')]",
+            "kind": "ThreatIntelligenceTaxii",
+            "properties": {
+                "collectionId": "[parameters('taxiiCollectionId')]",
+                "dataTypes": {
+                    "taxiiClient": {
+                        "state": "[parameters('taxiiEnabled')]"
+                    }
+                },
+                "friendlyName": "[parameters('taxiiFriendlyName')]",
+                "password": "[parameters('taxiiPassword')]",
+                "pollingFrequency": "[parameters('taxiiPollingFrequency')]",
+                //"taxiiLookbackPeriod": "[parameters('taxiiLookbackPeriod')]",
+                "taxiiServer": "[parameters('taxiiServer')]",
+                "tenantId": "[parameters('tenantId')]",
+                "userName": "[parameters('taxiiUsername')]",
+                "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
             }
         }
     ]

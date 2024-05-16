@@ -446,6 +446,11 @@
                                 "value": "SentinelOne"
                             },
                             {
+                                "label": "FusionEngine - Splunk",
+                                "description": "Configuration of FusionEngine Splunk Poller Required",
+                                "value": "FESplunk"
+                            },
+                            {
                                 "label": "Microsoft 365 Defender",
                                 "description": "This will only enable incident and alert synchronization, no advanced hunting data will be enabled. Relevant license and Global Admin or Security Admin permission required",
                                 "value": "Microsoft365Defender"
@@ -547,7 +552,119 @@
                           "required": false
                       },
                       "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'AzureActiveDirectory'),true,false)]"
-                  }
+                  },
+                  {
+                    "name": "taxiiEnabled",
+                      "type": "Microsoft.Common.CheckBox",
+                      "label": "Enable Taxii",
+                      "toolTip": "",
+                      "constraints": {
+                          "required": false
+                      },
+                      "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                  },
+                  {
+                    "name": "taxiiCollectionId",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Taxii Collection ID",
+                    "placeholder": "",
+                    "defaultValue": "",
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                  },
+                  {
+                    "name": "taxiiFriendlyName",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Taxii Friendly Name",
+                    "placeholder": "",
+                    "defaultValue": "Avertium Taxii Server",
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                  },
+                  {
+                    "name": "taxiiServer",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Taxii Server",
+                    "placeholder": "",
+                    "defaultValue": "",
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                  },
+                  {
+                    "name": "taxiiUsername",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Taxii Username",
+                    "placeholder": "",
+                    "defaultValue": "",
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                  },
+                  {
+                    "name": "taxiiPassword",
+                    "type": "Microsoft.Common.PasswordBox",
+                    "label": {
+                        "password": "Taxii Password",
+                        "confirmPassword": "Confirm Taxii password"
+                    },
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "options": {
+                        "hideConfirmation": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                },
+                {
+                    "name": "taxiiLookbackPeriod",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "Taxii Lookback Period",
+                    "placeholder": "",
+                    "defaultValue": "",
+                    "toolTip": "",
+                    "constraints": {
+                        "required": false
+                    },
+                    "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                },
+                {
+                    "name": "taxiiPollingFrequency",
+                      "type": "Microsoft.Common.DropDown",
+                      "label": "Select Polling Frequency",
+                      "placeholder": "",
+                      "defaultValue": "Once A Day",
+                      "toolTip": "",
+                      "constraints": {
+                          "allowedValues": [
+                              {
+                                  "label": "Once A Day",
+                                  "value": "OnceADay"
+                              },
+                              {
+                                  "label": "Once An Hour",
+                                  "value": "OnceAnHour"
+                              },
+                              {
+                                  "label": "Once A Minute",
+                                  "value": "OnceAMinute"
+                              }
+                          ],
+                          "required": false
+                      },
+                      "visible": "[if(contains(steps('dataConnectors').enableDataConnectors,'ThreatIntelligence'),true,false)]"
+                    }
               ]
           },
           {
@@ -673,6 +790,14 @@
             "enableSolutionsEssentials": "[steps('solutions').enableSolutionsEssentials]",
             "enableSolutionsTraining": "[steps('solutions').enableSolutionsTraining]",
             "enableDataConnectors": "[steps('dataConnectors').enableDataConnectors]",
+            "taxiiEnabled": "[if(equals(steps('dataConnectors').taxiiEnabled, true),'Enabled','Disabled')]",
+            "taxiiFriendlyName": "[steps('dataConnectors').taxiiFriendlyName]",
+            "taxiiCollectionId": "[steps('dataConnectors').taxiiCollectionId]",
+            "taxiiServer": "[steps('dataConnectors').taxiiServer]",
+            "taxiiUsername": "[steps('dataConnectors').taxiiUsername]",
+            "taxiiPassword": "[steps('dataConnectors').taxiiPassword",
+            "taxiiLookbackPeriod": "[steps('dataConnectors').taxiiLookbackPeriod]",
+            "taxiiPollingFrequency": "[steps('dataConnectors').taxiiPollingFrequency]",
             "aadStreams": "[steps('dataConnectors').aadStreams]",
             "location": "[location()]",
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
