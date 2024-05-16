@@ -423,9 +423,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionEndpoint.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/dataCollectionEndpoint.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionEndpoint.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/dataCollectionEndpoint.json"
                 },
                 "parameters": {
                     "location": {
@@ -446,9 +446,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/customLogTables.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/customLogTables.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/customLogTables.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/customLogTables.json"
                 },
                 "parameters": {
                     "dataConnectorsKind": {
@@ -475,9 +475,9 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    // "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionRules.json')]",
-                    // "contentVersion": "1.0.0.0"
-                    "relativePath": "LinkedTemplates/dataCollectionRules.json"
+                    "uri": "[uri(parameters('_artifactsLocation'), 'LinkedTemplates/dataCollectionRules.json')]",
+                    "contentVersion": "1.0.0.0"
+                    // "relativePath": "LinkedTemplates/dataCollectionRules.json"
                 },
                 "parameters": {
                     "dataConnectorsKind": {
