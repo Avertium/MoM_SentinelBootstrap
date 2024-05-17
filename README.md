@@ -20,8 +20,8 @@ Microsoft Sentinel All-in-One automates the following tasks:
 - Enables health diagnostics for Analytics Rules, Data Connectors and Automation Rules
 - Installs Content Hub solutions from a predefined list in three categories: 1st party, Essentials and Training
 - Enables Data Connectors from this list:
-    + Azure Active Directory (with the ability to select which data types will be ingested)
-    + Azure Active Directory Identity Protection
+    + Entra ID (with the ability to select which data types will be ingested)
+    + Entra ID Identity Protection
     + Azure Activity (from current subscription)
     + Dynamics 365
     + Microsoft 365 Defender
@@ -58,12 +58,10 @@ The following table summarizes permissions, licenses and permissions needed and 
 
 | Data Connector                                 | License         |  Permissions                    | Cost      |
 | ---------------------------------------------- | --------------- |---------------------------------|-----------|
-| Azure Active Directory (Tenant scope version only) | Any AAD license | Global Admin or Security Admin  | Billed    |
-| Azure Active Directory Identity Protection  | AAD Premium 2   | Global Admin or Security Admin  | Free      |
+| Entra ID (Tenant scope version only)           | Any AAD license | Global Admin or Security Admin  | Billed    |
+| Entra ID Identity Protection                   | AAD Premium 2   | Global Admin or Security Admin  | Free      |
 | Azure Activity                                 | None            | Subscription Reader             | Free      |
 | Dynamics 365                                   | D365 license    | Global Admin or Security Admin  | Billed    |
-| Microsoft 365 Defender                         | M365D license   | Global Admin or Security Admin  | Free      |
-| Microsoft Defender for Cloud                   | MDC license     | Security Reader                 | Free      |
 | Microsoft Insider Risk Management              | IRM license     | Global Admin or Security Admin  | Free      |
 | Microsoft PowerBi                              | PowerBi license | Global Admin or Security Admin  | Billed    |
 | Microsoft Project                              | MS Project license | Global Admin or Security Admin | Billed  |
