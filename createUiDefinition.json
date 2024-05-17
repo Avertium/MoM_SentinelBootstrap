@@ -803,8 +803,8 @@
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
             "enableScheduledAlerts": "[steps('analyticsRules').enableScheduledAlerts]",
             "severityLevels": "[steps('analyticsRules').severityLevels]",
-            "enableXDRLighthouse": "[steps('enableXDR').enableXDR]",
-            "mspTenantId": "[steps('enableXDR').mspTenantId]",
+            "enableXDRLighthouse": "[steps('xdrLighthouse').enableXDR]",
+            "mspTenantId": "[steps('xdrLighthouse').mspTenantId]",
             "rgName": "[basics('rgName')]"
         }
     }
