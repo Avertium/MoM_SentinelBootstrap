@@ -31,6 +31,7 @@ Microsoft Sentinel All-in-One automates the following tasks:
     + Microsoft Project
     + Office 365
     + Threat Intelligence Platforms
+    + ✨Enable and configure TAXII Threat Intelligence
     + ✨FusionEngine LogRhythm (Creates Custom Table and Data Collection Rule and Endpoint)
     + ✨FusionEngine SentinelOne (Creates Custom Table and Data Collection Rule and Endpoint)
 - Enables analytics rules (Scheduled and NRT) included in the selected Content Hub solutions, with the ability to filter by severity
@@ -70,3 +71,4 @@ The following table summarizes permissions, licenses and permissions needed and 
 | Threat Intelligence Platforms                  | None            | Global Admin or Security Admin  | Billed    |
 | FusionEngine LogRhythm                         | None            |                                 | Free      |
 | FusionEngine SentinelOne                       | None            |                                 | Free      |
+| FusionEngine Splunk                            | None            |                                 | Free      |
