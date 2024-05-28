@@ -396,6 +396,8 @@
             "dependsOn": [
                 "workspaceCreation"
             ],
+            "subscriptionId": "[parameters('subscriptionId')]",
+            "location": "[parameters('location')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
