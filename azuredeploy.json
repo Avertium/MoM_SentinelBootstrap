@@ -163,41 +163,6 @@
                 "description": "The tenant ID of the managing account for lighthouse."
             },
             "defaultValue": ""
-        },
-        "taxiiCollectionId": {
-            "type": "string"
-        },
-        "taxiiEnabled": {
-            "type": "string",
-            "defaultValue": "Enabled",
-            "allowedValues": [
-                "Enabled",
-                "Disabled"
-            ]
-        },
-        "taxiiFriendlyName": {
-            "type": "string"
-        },
-        "taxiiServer": {
-            "type": "string"
-        },
-        "taxiiUsername": {
-            "type": "string"
-        },
-        "taxiiPassword": {
-            "type": "string"
-        },
-        "taxiiLookbackPeriod": {
-            "type": "string"
-        },
-        "taxiiPollingFrequency": {
-            "type": "string",
-            "defaultValue": "OnceADay",
-            "allowedValues": [
-                "OnceADay",
-                "OnceAMinute",
-                "OnceAnHour"
-            ]
         }
     },
     "variables": {
@@ -319,30 +284,6 @@
                     },
                     "location": {
                         "value": "[parameters('location')]"
-                    },
-                    "taxiiCollectionId": {
-                        "value": "[parameters('taxiiCollectionId')]"
-                    },
-                    "taxiiEnabled": {
-                        "value": "[parameters('taxiiEnabled')]"
-                    },
-                    "taxiiFriendlyName": {
-                        "value": "[parameters('taxiiFriendlyName')]"
-                    },
-                    "taxiiServer": {
-                        "value": "[parameters('taxiiServer')]"
-                    },
-                    "taxiiUsername": {
-                        "value": "[parameters('taxiiUsername')]"
-                    },
-                    "taxiiPassword": {
-                        "value": "[parameters('taxiiPassword')]"
-                    },
-                    "taxiiLookbackPeriod": {
-                        "value": "[parameters('taxiiLookbackPeriod')]"
-                    },
-                    "taxiiPollingFrequency": {
-                        "value": "[parameters('taxiiPollingFrequency')]"
                     }
                 }
             }
